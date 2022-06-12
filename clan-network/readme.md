@@ -1,6 +1,42 @@
-#### Clan network
-
-
+# Autoinstall script for Clan-network
+## Testnet detail
+- Network Chain ID: playstation-2
+- Denom: uclan
+- Cosmos explorer
+```
+https://testnet.explorer.testnet.run/Clan%20Network/staking
+https://secretnodes.com/clan/chains/playstation-2/validators
+https://stake-testnet.clan.network/
+```
+- https://docs.clan.network/general/about-clan-network
+- Faucet: https://faucet-testnet.clan.network/
+## Minimum Hardware Requirements
+- 4GB RAM
+- 50GB+ of disk space
+- 2 Cores (modern CPU's)
+## How to
+#### You can setup your clan-network fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
+```
+wget -O clan.sh https://raw.githubusercontent.com/owlstake/testnet/main/clan-network/clan.sh && chmod +x clan.sh && ./clan.sh
+```
+## Post installation
+##### When installation is finished please load variables into system
+```
+source $HOME/.bash_profile
+```
+##### Next you have to make sure your validator is syncing blocks. You can use command below to check synchronization status
+```
+cland status 2>&1 | jq .SyncInfo
+```
+##### To check logs
+```
+journalctl -u cland -f -o cat
+```
+## Create wallet
+##### To create new wallet you can use command below. Don’t forget to save the mnemonic
+```
+cland keys add $WALLET
+```
 #### delete the node
 ```
 systemctl stop cland
