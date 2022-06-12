@@ -37,6 +37,24 @@ journalctl -u cland -f -o cat
 ```
 cland keys add $WALLET
 ```
+## Create validator
+```
+cland tx staking create-validator \
+  --amount 1000000uclan \
+  --from $WALLET \
+  --commission-max-change-rate "0.01" \
+  --commission-max-rate "1" \
+  --commission-rate "1" \
+  --min-self-delegation "1" \
+  --pubkey  $(uptickd tendermint show-validator) \
+  --moniker $NODENAME \
+  --fees 5550uclan
+  --chain-id $CHAIN_ID \
+  --identity=6B73E2068E0C0C4C \
+  --website="https://owlstake.com" \
+  --details="Trusted PoS Blockchain Validator. Find me at Telegram: https://t.me/owlstakeann or https://t.me/owlstakechat"
+```
+
 #### delete the node
 ```
 systemctl stop cland
