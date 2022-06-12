@@ -88,9 +88,7 @@ wget -qO $HOME/.clan/config/genesis.json "https://raw.githubusercontent.com/Clan
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0uclan\"/" $HOME/.clan/config/app.toml
 
 # set peers and seeds
-# SEEDS=$(curl -sL https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/uptick_7776-1/seeds.txt | tr '\n' ',')
 PEERS=$(curl -sL https://raw.githubusercontent.com/ClanNetwork/testnets/main/playstation-2/persistent-peers.txt | tr '\n' ',')
-#sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.uptickd/config/config.toml
 sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.clan/config/config.toml
 
 # disable indexing
@@ -110,17 +108,6 @@ sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.clan/config/app.toml
 sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.clan/config/app.toml
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.clan/config/app.toml
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.clan/config/app.toml
-
-# sync using State Sync
-#SNAP_RPC1="http://peer0.testnet.uptick.network:26657" \
-#&& SNAP_RPC2="http://peer1.testnet.uptick.network:26657"
-#LATEST_HEIGHT=$(curl -s $SNAP_RPC2/block | jq -r .result.block.header.height) \
-#&& BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)) \
-#&& TRUST_HASH=$(curl -s "$SNAP_RPC2/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-#sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-#s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC1,$SNAP_RPC2\"| ; \
-#s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
-#s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.uptickd/config/config.toml
 
 # reset
 cland tendermint unsafe-reset-all
