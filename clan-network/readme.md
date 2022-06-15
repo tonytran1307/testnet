@@ -46,7 +46,7 @@ cland tx staking create-validator \
   --commission-max-rate "1" \
   --commission-rate "1" \
   --min-self-delegation "1" \
-  --pubkey  $(uptickd tendermint show-validator) \
+  --pubkey  $(cland tendermint show-validator) \
   --moniker $NODENAME \
   --fees 5550uclan
   --chain-id $CHAIN_ID \
