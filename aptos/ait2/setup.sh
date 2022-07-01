@@ -46,9 +46,9 @@ rm aptos-cli.zip
 echo -e "\e[1m\e[32m5. Installing Validator Node ... \e[0m" && sleep 1
 mkdir ~/$WORKSPACE && cd ~/$WORKSPACE
 # download configs
-wget -qO docker-compose.yaml https://raw.githubusercontent.com/kj89/testnet_manuals/main/aptos/testnet/docker-compose.yaml
-wget -qO fullnode.yaml https://raw.githubusercontent.com/kj89/testnet_manuals/main/aptos/testnet/fullnode.yaml
-wget -qO validator.yaml https://raw.githubusercontent.com/kj89/testnet_manuals/main/aptos/testnet/validator.yaml
+wget -qO docker-compose.yaml https://raw.githubusercontent.com/owlstake/testnet/main/aptos/ait2/docker-compose.yaml
+wget -qO fullnode.yaml https://raw.githubusercontent.com/owlstake/testnet/main/aptos/ait2/fullnode.yaml
+wget -qO validator.yaml https://raw.githubusercontent.com/owlstake/testnet/main/aptos/ait2/validator.yaml
 
 # generate keys
 aptos genesis generate-keys --output-dir ~/$WORKSPACE
