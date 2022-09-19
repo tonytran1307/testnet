@@ -34,7 +34,7 @@ docker ps
 ```
 docker compose logs -f --tail=100 | grep <container-name>
 ```
-######stop a node
+###### stop a node
 ```
 docker compose down
 ```
