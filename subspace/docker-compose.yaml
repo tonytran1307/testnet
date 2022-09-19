@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   node:
-    image: ghcr.io/subspace/node:${IMAGE-TAG}
+    image: ghcr.io/subspace/node:${IMAGETAG}
     volumes:
       - node-data:/var/subspace:rw
     ports:
@@ -29,7 +29,7 @@ services:
     depends_on:
       node:
         condition: service_healthy
-    image: ghcr.io/subspace/farmer:${IMAGE-TAG}
+    image: ghcr.io/subspace/farmer:${IMAGETAG}
     volumes:
       - farmer-data:/var/subspace:rw
     ports:
@@ -41,8 +41,8 @@ services:
       "--node-rpc-url", "ws://node:9944",
       "--ws-server-listen-addr", "0.0.0.0:${PORT3}",
       "--listen-on", "/ip4/0.0.0.0/tcp/${PORT2}",
-      "--reward-address", "${REWARD-ADDRESS}",
-      "--plot-size", "${PLOT-SIZE}"
+      "--reward-address", "${REWARDADDRESS}",
+      "--plot-size", "${PLOTSIZE}"
     ]
 volumes:
   node-data:
