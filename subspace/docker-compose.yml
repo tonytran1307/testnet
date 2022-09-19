@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  node:
+    image: ghcr.io/subspace/node:${IMAGE-TAG}
+    volumes:
+      - node-data:/var/subspace:rw
+    ports:
+      - "0.0.0.0:${PORT1}:${PORT1}"
+    restart: unless-stopped
+    command: [
+      "--chain", "gemini-2a",
+      "--base-path", "/var/subspace",
+      "--execution", "wasm",
+      "--state-pruning", "1024",
+      "--keep-blocks", "1024",
+      "--port", "${PORT1}",
+      "--rpc-cors", "all",
+      "--rpc-methods", "safe",
+      "--unsafe-ws-external",
+      "--validator",
+      "--name", "${NODENAME}"
+    ]
+    healthcheck:
+      timeout: 5s
+      interval: 30s
+      retries: 5
+
+  farmer:
+    depends_on:
+      node:
+        condition: service_healthy
+    image: ghcr.io/subspace/farmer:${IMAGE-TAG}
+    volumes:
+      - farmer-data:/var/subspace:rw
+    ports:
+      - "0.0.0.0:${PORT2}:${PORT2}"
+    restart: unless-stopped
+    command: [
+      "--base-path", "/var/subspace",
+      "farm",
+      "--node-rpc-url", "ws://node:9944",
+      "--ws-server-listen-addr", "0.0.0.0:${PORT3}",
+      "--listen-on", "/ip4/0.0.0.0/tcp/${PORT2}",
+      "--reward-address", "${REWARD-ADDRESS}",
+      "--plot-size", "${PLOT-SIZE}"
+    ]
+volumes:
+  node-data:
+  farmer-data:
