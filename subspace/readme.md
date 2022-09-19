@@ -17,7 +17,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 cd $HOME
 mkdir node1
 cd node1
-wget https://raw.githubusercontent.com/owlstake/testnet/main/subspace/docker-compose.yml
+wget https://raw.githubusercontent.com/owlstake/testnet/main/subspace/docker-compose.yaml
 wget https://raw.githubusercontent.com/owlstake/testnet/main/subspace/.env
 ```
 ###### After finished download, you need to change variable inside file .env
