@@ -22,16 +22,19 @@ wget https://raw.githubusercontent.com/owlstake/testnet/main/subspace/.env
 each file .env should be another ports, another node name, another reward address
 ```
 ###### Some command
+###### start a node
 ```
-start a node
 docker compose up -d
-
-show all docker running
+```
+###### show all docker running
+```
 docker ps
-
-show logs
+```
+###### show logs
+```
 docker compose logs -f --tail=100 | grep <container-name>
-
-stop a node
+```
+######stop a node
+```
 docker compose down
 ```
