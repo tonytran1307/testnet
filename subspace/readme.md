@@ -12,14 +12,18 @@ curl -SL https://github.com/docker/compose/releases/download/v2.5.0/docker-compo
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
-###### Tạo nhiều thư mục và copy 2 file docker-compose.yaml + .env vào từng thư mục
+###### Create folder and copy 2 file docker-compose.yaml + .env inside each folder
 ```
+cd $HOME
+mkdir node1
+cd node1
 wget https://raw.githubusercontent.com/owlstake/testnet/main/subspace/docker-compose.yml
 wget https://raw.githubusercontent.com/owlstake/testnet/main/subspace/.env
 ```
 ###### After finished download, you need to change variable inside file .env
+###### each file .env should be another ports, another node name, another reward address
 ```
-each file .env should be another ports, another node name, another reward address
+nano .env
 ```
 ###### Some command
 ###### start a node
