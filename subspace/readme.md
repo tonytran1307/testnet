@@ -1,5 +1,5 @@
-### Hướng dẫn
-###### Cài docker và các thành phần phụ
+### Guide
+###### Install docker and other support software
 ```
 #!/bin/bash
 sudo apt update && sudo apt upgrade -y
@@ -13,13 +13,25 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 ###### Tạo nhiều thư mục và copy 2 file docker-compose.yaml + .env vào từng thư mục
-###### Đổi biến trong file .env
 ```
-mỗi 1 file .env là port phải khác nhau
-tên node khác
-địa chỉ nhận reward khác
+wget https://raw.githubusercontent.com/owlstake/testnet/main/subspace/docker-compose.yml
+wget https://raw.githubusercontent.com/owlstake/testnet/main/subspace/.env
 ```
-###### docker compose up -d
-###### docker ps
-###### docker compose logs -f --tail=100 | grep <container-name>
-###### Xóa docker compose down
+###### After finished download, you need to change variable inside file .env
+```
+each file .env should be another ports, another node name, another reward address
+```
+###### Some command
+```
+start a node
+docker compose up -d
+
+show all docker running
+docker ps
+
+show logs
+docker compose logs -f --tail=100 | grep <container-name>
+
+stop a node
+docker compose down
+```
