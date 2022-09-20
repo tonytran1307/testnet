@@ -43,7 +43,7 @@ docker compose logs -f --tail=100 | grep <container-name>
 docker compose down
 ```
 
-### If you want run the second node, just change the code here
+### If you want run the second node or n node, just change the code here, node2 --> noden
 ```
 cd $HOME
 mkdir node2
