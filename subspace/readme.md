@@ -42,3 +42,17 @@ docker compose logs -f --tail=100 | grep <container-name>
 ```
 docker compose down
 ```
+
+### If you want run the second node, just change the code here
+```
+cd $HOME
+mkdir node2
+cd node2
+wget -O docker-compose.yaml https://raw.githubusercontent.com/owlstake/testnet/main/subspace/docker-compose.yaml
+wget -O .env https://raw.githubusercontent.com/owlstake/testnet/main/subspace/.env
+
+Change ports, nodename, reward address inside .env file
+nano .env
+
+docker compose up -d
+```
