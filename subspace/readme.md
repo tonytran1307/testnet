@@ -20,6 +20,10 @@ cd node1
 wget -O docker-compose.yaml https://raw.githubusercontent.com/owlstake/testnet/main/subspace/docker-compose.yaml
 wget -O .env https://raw.githubusercontent.com/owlstake/testnet/main/subspace/.env
 ```
+###### you can check which port you are using by this command
+```
+lsof -i -P -n | grep LISTEN
+```
 ###### After finished download, you need to change variable inside file .env
 ###### each file .env should be another ports, another node name, another reward address
 ```
